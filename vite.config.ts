@@ -17,6 +17,9 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
+  // Served from forwardrentals.github.io/mamquam-sauna/ until a custom
+  // domain is wired up; switch to '/' at that point.
+  base: '/mamquam-sauna/',
   plugins: [
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if
