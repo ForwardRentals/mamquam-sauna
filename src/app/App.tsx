@@ -17,6 +17,17 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
 
+  // "Book Now" opens the real Rented Local payment flow (the embedded
+  // widget's modal). Falls back to the old request-only form below if the
+  // widget script hasn't loaded for some reason.
+  const openBooking = () => {
+    if (typeof window !== "undefined" && window.RentedLocal) {
+      window.RentedLocal.open("mamquamsauna-f3160d");
+    } else {
+      setBookingOpen(true);
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
@@ -151,7 +162,7 @@ export default function App() {
               </button>
             ))}
             <button
-              onClick={() => setBookingOpen(true)}
+              onClick={openBooking}
               style={{
                 background: "#c8a050",
                 border: "none",
@@ -365,7 +376,7 @@ export default function App() {
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", padding: "0 10px" }}>
             <button
-              onClick={() => setBookingOpen(true)}
+              onClick={openBooking}
               style={{
                 background: "#c8a050",
                 border: "none",
@@ -490,7 +501,7 @@ export default function App() {
                 Then it was taken away. The sauna was sold off, and the legend faded into the trees.
               </p>
               <p>
-                That's where <strong style={{ color: "#d4c9b4" }}>Shuwn and Glenn</strong> came in. They purchased the original sauna, preserved its soul, and rebuilt it — so that the story didn't end on the riverbank. Today, The Secret Sauna lives on, ready to be discovered again by those who seek the heat.
+                That's where <strong style={{ color: "#d4c9b4" }}>Glenn</strong> came in. He purchased the original sauna, preserved its soul, and rebuilt it — so that the story didn't end on the riverbank. Today, The Secret Sauna lives on, ready to be discovered again by those who seek the heat.
               </p>
             </div>
           </div>
@@ -992,7 +1003,7 @@ export default function App() {
               ))}
 
               <button
-                onClick={() => setBookingOpen(true)}
+                onClick={openBooking}
                 style={{
                   width: "100%",
                   background: "#c8a050",
@@ -1119,7 +1130,7 @@ export default function App() {
                 Book or Enquire
               </p>
               <button
-                onClick={() => setBookingOpen(true)}
+                onClick={openBooking}
                 style={{
                   background: "transparent",
                   border: "1px solid rgba(200,160,80,0.35)",
@@ -1144,7 +1155,7 @@ export default function App() {
                 Make a Booking
               </button>
               <p style={{ color: "#504840", fontSize: "0.8rem", marginTop: "16px" }}>
-                Owners & Founders: Shuwn & Glenn
+                Owner & Founder: Glenn
               </p>
             </div>
           </div>
@@ -1371,7 +1382,7 @@ function BookingForm({ onClose }: { onClose: () => void }) {
           Request Sent
         </h4>
         <p style={{ color: "#908878", lineHeight: "1.6", marginBottom: "32px" }}>
-          Shuwn and Glenn will be in touch shortly to confirm your booking. Get ready to heat up.
+          Glenn will be in touch shortly to confirm your booking. Get ready to heat up.
         </p>
         <button
           onClick={onClose}

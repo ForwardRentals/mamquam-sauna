@@ -50,9 +50,10 @@
       <div id="root"></div>
       <script type="module" src="/src/main.tsx"></script>
 
-      <!-- Rented Local booking widget — injects a floating "Book Now" button
-           that opens the Mamquam Sauna booking flow in a modal. -->
-      <script src="https://rentedlocal.com/rented-local-widget.js" data-embed-key="mamquamsauna-f3160d" defer></script>
+      <!-- Rented Local booking widget — the site's own "Book Now" buttons
+           call window.RentedLocal.open() directly, so auto-inject of the
+           widget's own floating button is turned off to avoid a duplicate. -->
+      <script src="https://rentedlocal.com/rented-local-widget.js" data-embed-key="mamquamsauna-f3160d" data-embed-auto="false" defer></script>
 
     </body>
   </html>
