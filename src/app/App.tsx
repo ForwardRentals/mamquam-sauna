@@ -272,7 +272,7 @@ export default function App() {
             <button
               onClick={() => {
                 setMenuOpen(false);
-                setBookingOpen(true);
+                openBooking();
               }}
               style={{
                 background: "#c8a050",
