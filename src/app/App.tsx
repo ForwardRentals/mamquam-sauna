@@ -48,8 +48,8 @@ export default function App() {
   // Set Open Graph meta tags for link preview
   useEffect(() => {
     const metaTags = [
-      { property: 'og:title', content: 'Mamquam Sauna | The Secret Sauna - Squamish, Whistler, Pemberton' },
-      { property: 'og:description', content: 'Born on the banks of the Mamquam River. Revived for those who seek the heat. Rent the original secret sauna for $325 per 24 hours. Wood-fired heat, cold plunge, and wilderness setting.' },
+      { property: 'og:title', content: 'Sauna Squamish | Mamquam Sauna – Wood-Fired Mobile Sauna Rental' },
+      { property: 'og:description', content: 'Looking for a sauna in Squamish? Rent the original secret sauna, born on the banks of the Mamquam River. Wood-fired heat, cold plunge and firewood included, $325 per 24 hours.' },
       { property: 'og:image', content: saunaPhoto },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: window.location.href },
@@ -74,7 +74,7 @@ export default function App() {
     });
 
     // Also set page title
-    document.title = 'Mamquam Sauna | The Secret Sauna - Squamish, Whistler, Pemberton';
+    document.title = 'Sauna Squamish | Mamquam Sauna – Wood-Fired Mobile Sauna Rental';
   }, []);
 
   const scrollTo = (id: string) => {
@@ -336,17 +336,6 @@ export default function App() {
             maxWidth: "800px",
           }}
         >
-          <p
-            style={{
-              color: "#c8a050",
-              letterSpacing: "0.3em",
-              textTransform: "uppercase",
-              fontSize: "clamp(0.65rem, 2vw, 0.75rem)",
-              marginBottom: "clamp(16px, 4vw, 20px)",
-            }}
-          >
-            Squamish · Whistler · Pemberton
-          </p>
           <h1
             style={{
               fontFamily: "'Playfair Display', serif",
@@ -357,6 +346,21 @@ export default function App() {
               fontWeight: 500,
             }}
           >
+            <span
+              style={{
+                display: "block",
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 400,
+                lineHeight: "1.5",
+                color: "#c8a050",
+                letterSpacing: "0.3em",
+                textTransform: "uppercase",
+                fontSize: "clamp(0.65rem, 2vw, 0.75rem)",
+                marginBottom: "clamp(16px, 4vw, 20px)",
+              }}
+            >
+              Squamish Sauna · Whistler · Pemberton
+            </span>
             The Secret
             <br />
             <em style={{ color: "#c8a050" }}>Sauna</em>
@@ -372,7 +376,7 @@ export default function App() {
               padding: "0 10px",
             }}
           >
-            Born on the banks of the Mamquam River. Revived for those who seek the heat.
+            Born on the banks of the Mamquam River. Revived for those who seek the heat. A wood-fired mobile sauna rental in Squamish, BC.
           </p>
           <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap", padding: "0 10px" }}>
             <button
@@ -732,7 +736,7 @@ export default function App() {
               {
                 name: "Squamish",
                 tagline: "Where the legend began",
-                desc: "At the foot of the Chief, surrounded by granite walls and old growth forest. The original home of the Secret Sauna.",
+                desc: "At the foot of the Chief, surrounded by granite walls and old growth forest. The original home of the Secret Sauna, and the sauna Squamish locals book for backyard, cabin and campsite sessions.",
                 note: "Mamquam River territory",
               },
               {
