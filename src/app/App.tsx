@@ -16,17 +16,26 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [rentedLocalOpen, setRentedLocalOpen] = useState(false);
 
-  // "Book Now" opens the real Rented Local payment flow (the embedded
-  // widget's modal). Falls back to the old request-only form below if the
-  // widget script hasn't loaded for some reason.
-  const openBooking = () => {
-    if (typeof window !== "undefined" && window.RentedLocal) {
-      window.RentedLocal.open("mamquamsauna-f3160d");
-    } else {
-      setBookingOpen(true);
-    }
-  };
+  // "Book Now" opens the real Rented Local payment flow inline in a modal.
+  // It's served from book.rentedlocal.com (a Cloudflare Worker mirror) because
+  // rentedlocal.com itself refuses to be framed (X-Frame-Options: DENY).
+  const openBooking = () => setRentedLocalOpen(true);
+
+  useEffect(() => {
+    if (!rentedLocalOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setRentedLocalOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [rentedLocalOpen]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -1180,6 +1189,67 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* RENTED LOCAL BOOKING (inline iframe) */}
+      {rentedLocalOpen && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 200,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "16px",
+            backgroundColor: "rgba(8,15,6,0.9)",
+            backdropFilter: "blur(12px)",
+          }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setRentedLocalOpen(false);
+          }}
+        >
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              maxWidth: "520px",
+              height: "min(820px, calc(100dvh - 32px))",
+              backgroundColor: "#fff",
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+            }}
+          >
+            <button
+              onClick={() => setRentedLocalOpen(false)}
+              aria-label="Close booking"
+              style={{
+                position: "absolute",
+                top: "8px",
+                right: "8px",
+                zIndex: 1,
+                width: "36px",
+                height: "36px",
+                borderRadius: "999px",
+                border: "none",
+                backgroundColor: "rgba(0,0,0,0.6)",
+                color: "#fff",
+                fontSize: "20px",
+                lineHeight: "36px",
+                cursor: "pointer",
+              }}
+            >
+              ×
+            </button>
+            <iframe
+              src="https://book.rentedlocal.com/book-appointment?embed_key=mamquamsauna-f3160d"
+              title="Book Mamquam Sauna"
+              allow="payment"
+              style={{ width: "100%", height: "100%", border: "none", display: "block" }}
+            />
+          </div>
+        </div>
+      )}
 
       {/* BOOKING MODAL */}
       {bookingOpen && (
