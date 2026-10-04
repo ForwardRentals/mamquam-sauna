@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import saunaPhoto from "figma:asset/86896a7eadd860628510c1ef3c9870e13224b024.png";
-import heroPhoto from "figma:asset/cd80d03d3d480ce717c6aebdd1c038a6e12bbd93.png";
-import privateBookingImage from "figma:asset/1e84d429bfd71494c2eab46dfe329c9b7f013e2b.png";
 
-const SAUNA_IMAGE = saunaPhoto;
-const MOUNTAINS_IMAGE = "https://images.unsplash.com/photo-1663645038231-55fef6adb6e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxTcXVhbWlzaCUyMG1vdW50YWlucyUyMGZvcmVzdCUyMHJpdmVyJTIwQkN8ZW58MXx8fHwxNzcxNjE1NDY5fDA&ixlib=rb-4.1.0&q=80&w=1080";
-const SAUNA_INTERIOR_IMAGE = privateBookingImage;
-const COLD_PLUNGE_IMAGE = "https://images.unsplash.com/photo-1663943293034-2103a8f5e6f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xkJTIwcGx1bmdlJTIwaWNlJTIwYmF0aCUyMHdpbnRlciUyMHdlbGxuZXNzfGVufDF8fHx8MTc3MTYxNTQ3MHww&ixlib=rb-4.1.0&q=80&w=1080";
+const SAUNA_IMAGE = "/img/sauna-interior.jpg";
+const RIVER_ORIGINAL_IMAGE = "/img/sauna-river.jpg";
+const HERO_IMAGE = "/img/sauna-dusk.jpg";
+const SAUNA_INTERIOR_IMAGE = "/img/sauna-door.jpg";
+const COLD_PLUNGE_IMAGE = "/img/sauna-delivered.jpg";
 const FIREWOOD_IMAGE = "https://images.unsplash.com/photo-1689771716787-0d593884bd65?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXJld29vZCUyMHN0YWNrJTIwbG9ncyUyMHJ1c3RpY3xlbnwxfHx8fDE3NzE2MTU0NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080";
-const WHISTLER_IMAGE = "https://images.unsplash.com/photo-1639436027140-d8b8d7ac5af4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxXaGlzdGxlciUyMG1vdW50YWluJTIwc25vdyUyMHdpbnRlciUyMGxhbmRzY2FwZXxlbnwxfHx8fDE3NzE2MTU0NzN8MA&ixlib=rb-4.1.0&q=80&w=1080";
+const WHISTLER_IMAGE = "/img/sauna-steam-couple.jpg";
 const TOWELS_IMAGE = "https://images.unsplash.com/photo-1667235195726-a7c440bca9bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyb2xsZWQlMjB3aGl0ZSUyMHRvd2VscyUyMHNwYSUyMHdlbGxuZXNzfGVufDF8fHx8MTc3MTYyMjIzOXww&ixlib=rb-4.1.0&q=80&w=1080";
-const FOREST_RIVER_IMAGE = "https://images.unsplash.com/photo-1656962659211-8f32ccb721e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmb3Jlc3QlMjByaXZlciUyMHdpbGRlcm5lc3MlMjBCQyUyMG5hdHVyZXxlbnwxfHx8fDE3NzE2MjIyMzl8MA&ixlib=rb-4.1.0&q=80&w=1080";
+const FOREST_RIVER_IMAGE = "/img/sauna-steam.jpg";
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -59,13 +58,13 @@ export default function App() {
     const metaTags = [
       { property: 'og:title', content: 'Mamquam Sauna | The Secret Sauna - Squamish, Whistler, Pemberton' },
       { property: 'og:description', content: 'Born on the banks of the Mamquam River. Revived for those who seek the heat. Rent the original secret sauna for $325 per 24 hours. Wood-fired heat, cold plunge, and wilderness setting.' },
-      { property: 'og:image', content: saunaPhoto },
+      { property: 'og:image', content: 'https://www.mamquamsauna.com/img/sauna-dusk.jpg' },
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: window.location.href },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'Mamquam Sauna | The Secret Sauna' },
       { name: 'twitter:description', content: 'Born on the banks of the Mamquam River. Revived for those who seek the heat. $325 per 24 hours.' },
-      { name: 'twitter:image', content: saunaPhoto },
+      { name: 'twitter:image', content: 'https://www.mamquamsauna.com/img/sauna-dusk.jpg' },
     ];
 
     metaTags.forEach(({ property, name, content }) => {
@@ -316,8 +315,8 @@ export default function App() {
         }}
       >
         <img
-          src={heroPhoto}
-          alt="The Secret Sauna with mountain backdrop"
+          src={HERO_IMAGE}
+          alt="The Mamquam barrel sauna glowing at dusk beside the ocean in the Sea to Sky corridor"
           style={{
             position: "absolute",
             inset: 0,
@@ -512,12 +511,17 @@ export default function App() {
               <p>
                 That's where <strong style={{ color: "#d4c9b4" }}>Glenn</strong> came in. He purchased the original sauna, preserved its soul, and rebuilt it — so that the story didn't end on the riverbank. Today, The Secret Sauna lives on, ready to be discovered again by those who seek the heat.
               </p>
+              <p style={{ marginTop: "20px", fontSize: "0.9rem" }}>
+                <a href="https://www.saunasquamish.com/mamquam-sauna.html" style={{ color: "#c8a050", textDecoration: "underline" }}>
+                  Read the full story of the Squamish secret sauna &rarr;
+                </a>
+              </p>
             </div>
           </div>
           <div style={{ position: "relative" }}>
             <img
-              src={MOUNTAINS_IMAGE}
-              alt="BC Mountains and forest"
+              src={RIVER_ORIGINAL_IMAGE}
+              alt="The original secret sauna on the banks of the Mamquam River, Squamish"
               style={{
                 width: "100%",
                 aspectRatio: "4/5",
@@ -743,18 +747,21 @@ export default function App() {
                 tagline: "Where the legend began",
                 desc: "At the foot of the Chief, surrounded by granite walls and old growth forest. The original home of the Secret Sauna.",
                 note: "Mamquam River territory",
+                link: { href: "https://www.saunasquamish.com/", label: "Squamish sauna guide" },
               },
               {
                 name: "Whistler",
                 tagline: "Alpine heat ritual",
                 desc: "World-class mountains meet a world-class sauna experience. The ultimate après-ski or post-trail recovery session.",
                 note: "Year-round availability",
+                link: { href: "https://www.saunawhistler.com/", label: "Whistler sauna guide" },
               },
               {
                 name: "Pemberton",
                 tagline: "Off the beaten path",
                 desc: "Wide open valleys, big sky country, and a deep quiet. Pemberton is where the pace slows and the heat hits different.",
                 note: "Remote & private setting",
+                link: null as null | { href: string; label: string },
               },
             ].map((loc) => (
               <div
@@ -832,6 +839,14 @@ export default function App() {
                   />
                   {loc.note}
                 </div>
+                {loc.link && (
+                  <a
+                    href={loc.link.href}
+                    style={{ display: "block", marginTop: "18px", color: "#d4c9b4", fontSize: "0.82rem", textDecoration: "underline" }}
+                  >
+                    {loc.link.label} &rarr;
+                  </a>
+                )}
               </div>
             ))}
           </div>
@@ -842,7 +857,7 @@ export default function App() {
       <section style={{ position: "relative", height: "500px", overflow: "hidden" }}>
         <img
           src={WHISTLER_IMAGE}
-          alt="Mountains backdrop"
+          alt="Two people in sauna hats in the doorway of the smoking barrel sauna"
           style={{
             width: "100%",
             height: "100%",
@@ -1085,11 +1100,24 @@ export default function App() {
               >
                 Locations
               </p>
-              {["Squamish, BC", "Whistler, BC", "Pemberton, BC"].map((loc) => (
-                <p key={loc} style={{ color: "#807870", fontSize: "0.85rem", marginBottom: "10px" }}>
-                  {loc}
-                </p>
-              ))}
+              {[
+                { label: "Squamish sauna rentals", href: "https://www.saunasquamish.com/" },
+                { label: "Whistler sauna rentals", href: "https://www.saunawhistler.com/" },
+                { label: "Pemberton, BC", href: "" },
+              ].map((loc) =>
+                loc.href ? (
+                  <a key={loc.label} href={loc.href} style={{ display: "block", color: "#807870", fontSize: "0.85rem", marginBottom: "10px", textDecoration: "none" }}>
+                    {loc.label}
+                  </a>
+                ) : (
+                  <p key={loc.label} style={{ color: "#807870", fontSize: "0.85rem", marginBottom: "10px" }}>
+                    {loc.label}
+                  </p>
+                )
+              )}
+              <a href="https://saunahatcanada.com/" style={{ display: "block", color: "#807870", fontSize: "0.85rem", marginTop: "18px", textDecoration: "none" }}>
+                Sauna hats &mdash; Sauna Hats Canada
+              </a>
             </div>
             <div>
               <p
