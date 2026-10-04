@@ -1229,8 +1229,9 @@ export default function App() {
             alignItems: "center",
             justifyContent: "center",
             padding: "16px",
-            backgroundColor: "rgba(8,15,6,0.9)",
-            backdropFilter: "blur(12px)",
+            // Solid backdrop, no backdrop-filter: blurring the page behind a
+            // live iframe (Stripe fields, animations) made the background flicker.
+            backgroundColor: "rgba(8,15,6,0.94)",
           }}
           onClick={(e) => {
             if (e.target === e.currentTarget) setRentedLocalOpen(false);
