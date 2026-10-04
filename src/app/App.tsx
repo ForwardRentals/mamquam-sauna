@@ -22,6 +22,14 @@ export default function App() {
   // rentedlocal.com itself refuses to be framed (X-Frame-Options: DENY).
   const openBooking = () => setRentedLocalOpen(true);
 
+  // Lets the sauna-chat bubble's "Check dates & book" button open this modal
+  // (same API as the Rented Local widget script on the sister sites).
+  useEffect(() => {
+    const w = window as unknown as { RentedLocal?: { open: () => void; close: () => void } };
+    w.RentedLocal = { open: () => setRentedLocalOpen(true), close: () => setRentedLocalOpen(false) };
+    return () => { delete w.RentedLocal; };
+  }, []);
+
   useEffect(() => {
     if (!rentedLocalOpen) return;
     const prevOverflow = document.body.style.overflow;
