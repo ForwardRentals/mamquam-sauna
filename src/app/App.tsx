@@ -858,6 +858,47 @@ export default function App() {
               </div>
             ))}
           </div>
+
+          {/* Land acknowledgement + how we treat the places we set up */}
+          <div
+            style={{
+              maxWidth: "760px",
+              margin: "64px auto 0",
+              padding: "36px 32px",
+              textAlign: "center",
+              borderTop: "1px solid rgba(200,160,80,0.2)",
+              borderBottom: "1px solid rgba(200,160,80,0.2)",
+            }}
+          >
+            <p
+              style={{
+                color: "#c8a050",
+                letterSpacing: "0.25em",
+                textTransform: "uppercase",
+                fontSize: "0.72rem",
+                marginBottom: "16px",
+              }}
+            >
+              Land Acknowledgement
+            </p>
+            <p
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "clamp(1.1rem, 2.2vw, 1.35rem)",
+                color: "#f0ebe1",
+                lineHeight: 1.6,
+                marginBottom: "18px",
+              }}
+            >
+              Mamquam Sauna operates on the unceded territories of the Sḵwx̱wú7mesh Úxwumixw (Squamish Nation) and the
+              Lil̓wat Nation, who have cared for these lands and waters since time immemorial. We're grateful to live,
+              work and share the heat here.
+            </p>
+            <p style={{ color: "#908878", fontSize: "0.92rem", lineHeight: 1.7 }}>
+              Out of respect for the land and our neighbours, we only set up on private property with permission, and we
+              ask every guest to keep fires contained, pack out what they bring, and leave each spot as they found it.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -1217,7 +1258,8 @@ export default function App() {
             }}
           >
             <p style={{ color: "#403830", fontSize: "0.75rem" }}>
-              © 2025 The Secret Sauna. All rights reserved. Sea to Sky Corridor, BC.
+              © 2025 The Secret Sauna. All rights reserved. On the unceded territories of the Sḵwx̱wú7mesh Úxwumixw and
+              Lil̓wat Nation, Sea to Sky Corridor, BC.
             </p>
             <p style={{ color: "#403830", fontSize: "0.75rem", fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}>
               The legend lives on.
