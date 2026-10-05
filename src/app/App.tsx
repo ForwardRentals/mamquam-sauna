@@ -895,8 +895,8 @@ export default function App() {
               work and share the heat here.
             </p>
             <p style={{ color: "#908878", fontSize: "0.92rem", lineHeight: 1.7 }}>
-              Out of respect for the land and our neighbours, we only set up on private property with permission, and we
-              ask every guest to keep fires contained, pack out what they bring, and leave each spot as they found it.
+              Out of respect for the land and our neighbours, we ask every guest to keep fires contained, pack out what
+              they bring, and leave each spot as they found it.
             </p>
           </div>
         </div>
